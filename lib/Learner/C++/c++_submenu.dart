@@ -49,14 +49,14 @@ class _CppSubmenuState extends State<CppSubmenu> {
 
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(light), // Use your background color
+                      backgroundColor: MaterialStateProperty.all(Colors.white10), // Use your background color
                       padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 15, vertical: 20)),
                       elevation: MaterialStateProperty.all(0), // Adjust elevation if needed
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                           side: BorderSide(
-                            color: Colors.white, // Border color
+                            color: Colors.transparent, // Border color
                             width: 8, // Border width
                           ),
                         ),

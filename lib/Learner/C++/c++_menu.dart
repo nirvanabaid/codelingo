@@ -49,10 +49,10 @@ class _CppMenuState extends State<CppMenu> {
 
               width: width,
               decoration: BoxDecoration(
-                color: highlight, // Your existing background color
+                color:Color.fromRGBO(238, 80, 53, 1.0), // Your existing background color
                 borderRadius: BorderRadius.circular(10), // Adjust the radius value as needed for circular corners
                 border: Border.all(
-                  color: Colors.white, // Border color
+                  color: Colors.transparent, // Border color
                   width: 5, // Border width
                   style: BorderStyle.solid, // Border style
                 ),
@@ -75,14 +75,14 @@ class _CppMenuState extends State<CppMenu> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => CppSubmenu(data: items[index])));
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(light), // Use your background color
+                      backgroundColor: MaterialStateProperty.all(Colors.white10), // Use your background color
                       padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 15, vertical: 20)),
                       elevation: MaterialStateProperty.all(0), // Adjust elevation if needed
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                           side: BorderSide(
-                            color: Colors.white, // Border color
+                            color: Colors.transparent, // Border color
                             width: 8, // Border width
                           ),
                         ),
