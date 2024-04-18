@@ -21,11 +21,11 @@ final List<Map<String, dynamic>> java = [
 
 final List<Map<String, dynamic>> cpp = [
   {"topic":"Getting Started","completed":1,"subtopics":["Introduction","Basics","Sample Code"], "subcomp":[0,1,0], "content":[IntroductionSection(),BasicsSection(),sampleCode1()]},
-  {"topic":"Variables and Constants","completed":1,"subtopics":["C++ Variables","Sample Code","Constants in C++"], "subcomp":[0,0,0], "content":[CVariablesSection(),sampleCode2(),ConstantsSection()]},
-  {"topic":"Data Types","completed":1,"subtopics":["Data Types in C++","Types of Data Types in C++"], "subcomp":[0,0],"content":[DataTypesCpp(), DatatypeTypesCpp()]},
-  {"topic":"Operators","completed":1,"subtopics":["Operators in C++","Arthematic Operators"],"subcomp":[0,0],"content":[OperatorsCpp(),ArthematicOperators()]},
-  {"topic":"Decision Making","completed":0},
-  {"topic":"Loops","completed":0},
+  {"topic":"Variables and Constants","completed":0,"subtopics":["C++ Variables","Sample Code","Constants in C++"], "subcomp":[0,0,0], "content":[CVariablesSection(),sampleCode2(),ConstantsSection()]},
+  {"topic":"Data Types","completed":0,"subtopics":["Data Types in C++","Types of Data Types in C++"], "subcomp":[0,0],"content":[DataTypesCpp(), DatatypeTypesCpp()]},
+  {"topic":"Operators","completed":0,"subtopics":["Operators in C++","Arthematic Operators","Relational Operators","Logical Operators","Assignment Operators"],"subcomp":[0,0,0,0,0],"content":[OperatorsCpp(),ArthematicOperators(),RelationalOperators(),LogicalOperators(),AssignmentOperatorCpp()]},
+  {"topic":"Decision Making","completed":0,"subtopics":["Decision Making in C++","Simple if statement in C++","if-else statement","Nested if-else statement","If-else-if ladder"],"subcomp":[0,0,0,0,0],"content":[DecisionMakingCpp(),IfCpp(),IfElseCpp(),NestedIfElseCpp(),IfElseIfLadder()]},
+  {"topic":"Loops","completed":0,"subtopics":["Loops in C++",'For loop in C++','While loop in C++','do-while loop in C++'],"subcomp":[0,0,0,0],"content":[LoopsCpp(),ForLoopCpp(),WhileLoopCpp(),DoWhileLoopCpp()]},
 ];
 
 
