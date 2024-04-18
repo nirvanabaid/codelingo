@@ -52,10 +52,10 @@ class _JavaMenuState extends State<JavaMenu> {
 
               width: width,
               decoration: BoxDecoration(
-                color: highlight, // Your existing background color
+                color: Color.fromRGBO(238, 80, 53, 1.0), // Your existing background color
                 borderRadius: BorderRadius.circular(10), // Adjust the radius value as needed for circular corners
                 border: Border.all(
-                  color: Colors.white, // Border color
+                  color: Colors.transparent, // Border color
                   width: 5, // Border width
                   style: BorderStyle.solid, // Border style
                 ),
@@ -78,14 +78,14 @@ class _JavaMenuState extends State<JavaMenu> {
 
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(light), // Use your background color
+                      backgroundColor: MaterialStateProperty.all(Colors.white10), // Use your background color
                       padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 15, vertical: 20)),
                       elevation: MaterialStateProperty.all(0), // Adjust elevation if needed
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                           side: BorderSide(
-                            color: Colors.white, // Border color
+                            color: Colors.transparent, // Border color
                             width: 8, // Border width
                           ),
                         ),
@@ -122,7 +122,7 @@ class _JavaMenuState extends State<JavaMenu> {
                               ),
                             ),
                           ),
-                          Align(alignment: Alignment.topRight, child: (items[index]['completed']==0)?Icon(Icons.open_in_new, color: white, size: height*0.035,):Icon(Icons.check_box, color: Colors.green, size: height*0.035,),),
+                          Align(alignment: Alignment.topRight, child: (items[index]['completed']==0)?Icon(Icons.open_in_new, color: Colors.white, size: height*0.035,):Icon(Icons.check_box, color: Colors.green, size: height*0.035,),),
                           SizedBox(width: width*0.02,)
                         ],
                       ),

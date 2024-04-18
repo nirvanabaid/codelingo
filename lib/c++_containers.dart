@@ -132,7 +132,7 @@ In line #3, we defined the main function as int main(). The main function 
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10), // Circular corners
                     side: BorderSide(
-                      color: highlight, // Border color
+                      color: Colors.transparent, // Border color
                       width: 7, // Border width
                       style: BorderStyle.solid, // Border style
                     ),
@@ -232,6 +232,203 @@ return 0;
             style: TextStyle(color: Colors.white,fontSize: height*0.023, ), textAlign: TextAlign.justify,
           ),
 
+          Container(
+            margin: EdgeInsets.only(top: height*0.015),
+            width: width,
+            color: Colors.white,
+            height: 1,
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
+class CVariablesSection extends StatelessWidget {
+  const CVariablesSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("C++ Variables", style: TextStyle(color: Colors.white, fontSize: height*0.035, fontWeight: FontWeight.bold)),
+          Text('''Variables are containers for storing data values. In C++, there are different types of variables (defined with different keywords), for example: \n
+    #int- stores integers (whole numbers), without decimals, such as 123 or -123 
+    #double - stores floating point numbers, with decimals, such as 19.99 or -19.99 
+    #char - stores single characters, such as 'a' or 'B'. Char values are surrounded by single quotes 
+    #string - stores text, such as "Hello World". String values are surrounded by double quotes 
+    #bool - stores values with two states: true or false \n''',
+            style: TextStyle(color: Colors.white,fontSize: height*0.023, ), textAlign: TextAlign.justify,
+          ),
+          Container(
+            width: width * 1, // Define the width of the container
+            height: height * 0.27, // Define the height of the container to match the image
+            child: Image.network(
+              "https://raw.githubusercontent.com/nirvanabaid/images_codelingo/main/variable.png",
+              fit: BoxFit.fitWidth,
+              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) return child;
+                return SizedBox(
+                  width: width * 0.45, // Match the container width
+                  height: height * 0.27, // Match the container height
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+
+          Text("\n\n\nVariable Declaration in    C++ ", style: TextStyle(color: Colors.white, fontSize: height*0.035, fontWeight: FontWeight.bold)),
+          Text('''The declaration of variable informs the compiler that there is a variable with the specified type and name present. So, when the compiler receives these signals of the valid declaration it continues with further compilation without needing more information about the variable. 
+
+However, the declaration of variables names, etc. are only useful during compilation. This is why it is important that all variables in C++ must be declared prior to use. 
+
+After the program is linked, the compiler requires an actual variable definition. Also, when using multiple files and defining your variable in one of the files that will be accessible when the program is linked, a variable declaration is useful.  \n\n\n''',
+            style: TextStyle(color: Colors.white,fontSize: height*0.023, ), textAlign: TextAlign.justify,
+          ),
+          Container(
+            margin: EdgeInsets.only(top: height*0.015),
+            width: width,
+            color: Colors.white,
+            height: 1,
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
+class sampleCode2 extends StatelessWidget{
+  const sampleCode2({super.key});
+  @override
+  @override
+  Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Sample Code", style: TextStyle(color: Colors.white, fontSize: height*0.035, fontWeight: FontWeight.bold)),
+
+
+
+
+          Text('''
+#include <iostream> 
+using namespace std;
+int main() { 
+int age = 23;
+double height = 1.74; 
+string name = "Paul"; 
+cout << "My name is " << name << ", and I am " << age << " years old." << endl; 
+cout << "I am " << height << " meters tall." << endl; 
+return 0; 
+}  
+}''',
+            style: TextStyle(color: Colors.white,fontSize: height*0.023, ), textAlign: TextAlign.justify,
+          ),
+
+          Container(
+            margin: EdgeInsets.only(top: height*0.015),
+            width: width,
+            color: Colors.white,
+            height: 1,
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
+class ConstantsSection extends StatelessWidget {
+  const ConstantsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Constants in C++ ", style: TextStyle(color: Colors.white, fontSize: height*0.035, fontWeight: FontWeight.bold)),
+          Text('''The constants in C++ are the read-only variables whose values cannot be modified once they are declared in the C++ program. The type of constant can be an integer constant, a floating pointer constant, a string constant, or a character constant. In C++ language, the const keyword is used to define the constants. 
+In this article, we will discuss about the constants in C++ programming, ways to define constants in C++, types of constants in C++, their properties and the difference between literals and constants. \n''',
+            style: TextStyle(color: Colors.white,fontSize: height*0.023, ), textAlign: TextAlign.justify,
+          ),
+          Text("How to Define Constant in C++?  ", style: TextStyle(color: Colors.white, fontSize: height*0.035, fontWeight: FontWeight.bold)),
+          Text('''We define a constant in C++ language using the const keyword. Also known as a const type qualifier, the const keyword is placed at the start of the variable declaration to declare that variable as a constant.  \n''',
+            style: TextStyle(color: Colors.white,fontSize: height*0.023, ), textAlign: TextAlign.justify,
+          ),
+          Text("Syntax to Define Constant  ", style: TextStyle(color: Colors.white, fontSize: height*0.035, fontWeight: FontWeight.bold)),
+          Text(''' const data_type var_name = value;   \n''',
+            style: TextStyle(color: Colors.white,fontSize: height*0.023, ), textAlign: TextAlign.justify,
+          ),
+          Text("Examples of Constants in C++ ", style: TextStyle(color: Colors.white, fontSize: height*0.035, fontWeight: FontWeight.bold)),
+
+          Container(
+            width: width * 1, // Define the width of the container
+            height: height * 0.27, // Define the height of the container to match the image
+            child: Image.network(
+              "https://github.com/nirvanabaid/images_codelingo/blob/main/const.png?raw=true",
+              fit: BoxFit.fitWidth,
+              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) return child;
+                return SizedBox(
+                  width: width * 0.45, // Match the container width
+                  height: height * 0.27, // Match the container height
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          Container(
+            width: width * 1, // Define the width of the container
+            height: height * 0.27, // Define the height of the container to match the image
+            child: Image.network(
+              "https://github.com/nirvanabaid/images_codelingo/blob/main/Screenshot%202024-04-18%20164231.png?raw=true",
+              fit: BoxFit.fitWidth,
+              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) return child;
+                return SizedBox(
+                  width: width * 0.45, // Match the container width
+                  height: height * 0.27, // Match the container height
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
           Container(
             margin: EdgeInsets.only(top: height*0.015),
             width: width,
