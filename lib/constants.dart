@@ -22,8 +22,8 @@ final List<Map<String, dynamic>> java = [
 final List<Map<String, dynamic>> cpp = [
   {"topic":"Getting Started","completed":1,"subtopics":["Introduction","Basics","Sample Code"], "subcomp":[0,1,0], "content":[IntroductionSection(),BasicsSection(),sampleCode1()]},
   {"topic":"Variables and Constants","completed":1,"subtopics":["C++ Variables","Sample Code","Constants in C++"], "subcomp":[0,0,0], "content":[CVariablesSection(),sampleCode2(),ConstantsSection()]},
-  {"topic":"Data Types","completed":0},
-  {"topic":"Operators","completed":0},
+  {"topic":"Data Types","completed":1,"subtopics":["Data Types in C++","Types of Data Types in C++"], "subcomp":[0,0],"content":[DataTypesCpp(), DatatypeTypesCpp()]},
+  {"topic":"Operators","completed":1,"subtopics":["Operators in C++","Arthematic Operators"],"subcomp":[0,0],"content":[OperatorsCpp(),ArthematicOperators()]},
   {"topic":"Decision Making","completed":0},
   {"topic":"Loops","completed":0},
 ];
