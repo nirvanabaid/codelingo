@@ -1,5 +1,6 @@
 import 'package:codelingo/c++_containers.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // Color Palette from the provided image
 const Color white = Color(0xFFFFFFFF); // WHITE
@@ -21,8 +22,35 @@ final List<Map<String, dynamic>> java = [
 
 
 
+void topicComplete(Map<String, dynamic> item){
+  int a=1;
+
+  for(var i in item['subcomp']){
+    if(i!=1)
+      {
+        a=0;
+        break;
+      }
+  }
+  if(a==1){
+    item['completed']=1;
+  }
+}
+void subtopicComplete(Map<String, dynamic> item, int index){
+  int a=0;
+  for (var i in cpp){
+    if(i==item){
+      i['subcomp'][index]=1;
+      print(i);
+      break;
+    }
+
+  }
+
+}
+
 final List<Map<String, dynamic>> cpp = [
-  {"topic":"Getting Started","completed":1,"subtopics":["Introduction","Basics","Sample Code"], "subcomp":[0,1,0], "content":[IntroductionSection(),BasicsSection(),sampleCode1()]},
+  {"topic":"Getting Started","completed":1,"subtopics":["Introduction","Basics","Sample Code"], "subcomp":[1,1,1], "content":[IntroductionSection(),BasicsSection(),sampleCode1()]},
   {"topic":"Variables and Constants","completed":0,"subtopics":["C++ Variables","Sample Code","Constants in C++"], "subcomp":[0,0,0], "content":[CVariablesSection(),sampleCode2(),ConstantsSection()]},
   {"topic":"Data Types","completed":0,"subtopics":["Data Types in C++","Types of Data Types in C++"], "subcomp":[0,0],"content":[DataTypesCpp(), DatatypeTypesCpp()]},
   {"topic":"Operators","completed":0,"subtopics":["Operators in C++","Arthematic Operators","Relational Operators","Logical Operators","Assignment Operators"],"subcomp":[0,0,0,0,0],"content":[OperatorsCpp(),ArthematicOperators(),RelationalOperators(),LogicalOperators(),AssignmentOperatorCpp()]},

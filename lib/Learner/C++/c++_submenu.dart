@@ -3,23 +3,49 @@ import 'package:flutter/material.dart';
 
 import '../../c++_containers.dart';
 import '../../constants.dart';
+final List<Map<String, dynamic>> items = cpp;
 
 class CppSubmenu extends StatefulWidget {
-  final Map<String, dynamic> data;
+  final int index;
 
-  const CppSubmenu({super.key, required this.data});
+  const CppSubmenu({super.key, required this.index});
 
   @override
   State<CppSubmenu> createState() => _CppSubmenuState();
 }
 
-class _CppSubmenuState extends State<CppSubmenu> {
+class _CppSubmenuState extends State<CppSubmenu> with WidgetsBindingObserver {
+  late Map<String, dynamic> data;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    data=cpp[widget.index];
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    // Check if the state is resumed (when coming back to this screen)
+    if (state == AppLifecycleState.resumed) {
+      // Force rebuild the widget to reflect any changes
+      setState(() {
+        // This code will re-run the build method thus refreshing the screen
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     var height= MediaQuery.of(context).size.height;
     var width= MediaQuery.of(context).size.width;
     // Example of using the passed data. Make sure the key exists or provide a default value.
-    String title = widget.data['topic'] ?? 'Default Title';
+    String title = data['topic'] ?? 'Default Title';
 
     return Scaffold(
       backgroundColor: bg,
@@ -39,13 +65,13 @@ class _CppSubmenuState extends State<CppSubmenu> {
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: widget.data['subtopics'].length,
+              itemCount: data['subtopics'].length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Content(c: widget.data['content'][index], subtopic: widget.data['subtopics'][index])));//widget.data['content'][index]
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Content(c: data['content'][index], subtopic: data['subtopics'][index], data: data, index: index,)));//data['content'][index]
 
                     },
                     style: ButtonStyle(
@@ -85,7 +111,7 @@ class _CppSubmenuState extends State<CppSubmenu> {
                           SizedBox(width: width * 0.03), // Space between image and text
                           Expanded(
                             child: Text(
-                              widget.data['subtopics'][index],
+                              data['subtopics'][index],
                               style: TextStyle(
                                 fontSize: height * 0.03, // Adjust 'height' as per your layout
                                 fontWeight: FontWeight.bold,
@@ -93,7 +119,7 @@ class _CppSubmenuState extends State<CppSubmenu> {
                               ),
                             ),
                           ),
-                          Align(alignment: Alignment.topRight, child: (widget.data['subcomp'][index]==0)?Icon(Icons.open_in_new, color: white, size: height*0.035,):Icon(Icons.check_box, color: Colors.green, size: height*0.035,),),
+                          Align(alignment: Alignment.topRight, child: (data['subcomp'][index]==0)?Icon(Icons.open_in_new, color: white, size: height*0.035,):Icon(Icons.check_box, color: Colors.green, size: height*0.035,),),
                           SizedBox(width: width*0.02,)
                         ],
                       ),

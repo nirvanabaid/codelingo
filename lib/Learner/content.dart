@@ -5,8 +5,10 @@ import '../constants.dart';
 class Content extends StatefulWidget {
   final Widget c;
   final String subtopic;
+  final Map<String, dynamic> data;
+  final int index;
   
-  const Content({super.key, required this.c, required this.subtopic});
+  const Content({super.key, required this.c, required this.subtopic, required this.data, required this.index});
 
   @override
   State<Content> createState() => _ContentState();
@@ -39,8 +41,8 @@ class _ContentState extends State<Content> {
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: ElevatedButton(
                   onPressed: () {
-                    // Define what happens when the button is pressed
-                    print("Mark as Done");
+                    subtopicComplete(widget.data, widget.index);
+
                   },
                   style: ButtonStyle(
 

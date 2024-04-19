@@ -1,5 +1,7 @@
 import 'package:codelingo/Learner/C++/c++_submenu.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 import '../../constants.dart';
 
@@ -19,9 +21,11 @@ class _CppMenuState extends State<CppMenu> {
     super.initState();
     for(var item in items)
     {
+      topicComplete(item);
       if(item['completed'] == 1){
         completedItems++;
       }
+
     }
     // You can do something with itemsCount here or just store it to use in your widget tree
   }
@@ -60,6 +64,16 @@ class _CppMenuState extends State<CppMenu> {
               child: Row(
                 children: [
                   Text("Completed: ", style: TextStyle(color: white, fontSize: height * 0.03, fontWeight: FontWeight.w700),),//$completedItems/${items.length}
+                  Expanded(
+                    child: LinearProgressBar(
+                      minHeight: 10,
+                      maxSteps:items.length ,
+                      progressType: LinearProgressBar.progressTypeLinear, // Use Linear progress
+                      currentStep: completedItems,
+                      progressColor: Colors.lightGreenAccent,
+                      backgroundColor: Colors.grey,
+                    ),
+                  )
 
                 ],
               ),
@@ -73,7 +87,7 @@ class _CppMenuState extends State<CppMenu> {
                   padding: const EdgeInsets.all(10.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => CppSubmenu(data: items[index])));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => CppSubmenu(index: index,)));
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.white10), // Use your background color

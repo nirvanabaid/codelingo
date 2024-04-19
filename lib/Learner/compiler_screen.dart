@@ -6,7 +6,14 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CompilerScreen extends StatefulWidget {
-  const CompilerScreen({super.key});
+  final String input;
+  String language;
+  // If no input is given, 'Default Input Value' is used.
+  CompilerScreen({
+    Key? key,
+    this.input = "print(\"Hello World\")",
+    this.language = 'python', // default language
+  }) : super(key: key);
 
   @override
   State<CompilerScreen> createState() => _CompilerScreenState();
@@ -26,7 +33,7 @@ class _CompilerScreenState extends State<CompilerScreen> {
       backgroundColor: bg,
         body: Container(
           margin: EdgeInsets.only(bottom: 10),
-          child: Compiler(input: "print(\"Hello World\")",language: 'python',),
+          child: Compiler(input: widget.input,language: widget.language,),
         )
     ),
     );

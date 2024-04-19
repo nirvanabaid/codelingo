@@ -1,6 +1,15 @@
+import 'package:codelingo/Learner/compiler_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'constants.dart';
+
+Future<void> _launchUrl(String url) async {
+  Uri _url=Uri.parse(url);
+  if (!await launchUrl(_url)) {
+    throw Exception('Could not launch $_url');
+  }
+}
 
 class IntroductionSection extends StatelessWidget {
   IntroductionSection({Key? key}) : super(key: key);
@@ -172,8 +181,7 @@ In line #3, we defined the main function as int main(). The main function 
             width: width,
             child: ElevatedButton(
               onPressed: () {
-                // Define what happens when the button is pressed
-                print("Marked as Done");
+                _launchUrl("https://www.youtube.com/watch?v=S33SNjGyVN0");
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
@@ -253,7 +261,24 @@ In line #3, we defined the main function as int main(). The main function 
 }
 
 class sampleCode1 extends StatelessWidget {
-  const sampleCode1({super.key});
+   sampleCode1({super.key});
+
+  String code='''#include <iostream>
+// Standard Namespace  
+  using namespace std;
+// Main Function  
+  int main()
+  {
+// Body of the Function  
+// Declaration of Variable  
+    int num1 = 24;
+    int num2 = 34;
+    int result = num1 + num2;
+// Output  
+    cout << result << endl;
+// Return Statement  
+    return 0;
+  }''';
 
   @override
   Widget build(BuildContext context) {
@@ -292,6 +317,58 @@ return 0;
               fontSize: height * 0.023,
             ),
             textAlign: TextAlign.justify,
+          ),
+          SizedBox(
+            height: height * 0.01,
+          ),
+          Container(
+            width: width,
+            child: ElevatedButton(
+              onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CompilerScreen(input: code, language: 'cpp',)));
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                    dark), // Button background color
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10), // Circular corners
+                    side: BorderSide(
+                      color: Colors.transparent, // Border color
+                      width: 7, // Border width
+                      style: BorderStyle.solid, // Border style
+                    ),
+                  ),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: height * 0.03 / 2), // Adjust vertical padding
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      // Define the height of the container to match the image
+                      child: Icon( Icons.code_rounded,color: Colors.white, size: 40,)
+                    ),
+                    SizedBox(
+                      width: width * 0.05,
+                    ),
+                    Flexible(
+                      child: Text(
+                        "Run Code",
+                        style: TextStyle(
+                          color:
+                          Colors.white, // Text color - make sure 'dark' is defined in your constants or replace with actual color
+                          fontSize: height * 0.03,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
           Container(
             margin: EdgeInsets.only(top: height * 0.015),
