@@ -8,6 +8,8 @@ const Color bg = Color.fromRGBO(8, 8, 28, 1.0);//Color(0xFF424769); // Dark slat
 const Color dark = Color.fromRGBO(79 , 78, 171, 1); // Dark purple color
 const Color highlight = Color(0xFFF9B17A); // Light orange color
 
+String api_key="d6048ba95cmsh76e88f280345517p18b3e8jsn8128f50554ba";
+
 final List<Map<String, dynamic>> java = [
   {"topic":"Introduction","completed":0},
   {"topic":"Variables","completed":1},

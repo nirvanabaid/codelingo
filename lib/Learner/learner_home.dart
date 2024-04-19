@@ -1,12 +1,14 @@
 import 'package:codelingo/Learner/C++/c++_menu.dart';
 import 'package:codelingo/Learner/Java/java_menu.dart';
 import 'package:codelingo/Learner/Python/python_menu.dart';
+import 'package:codelingo/Learner/compiler_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:codelingo/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 final List<Map<String, dynamic>> items = [
   {"lang": "JAVA", "dir": JavaMenu(), "img": "https://github.com/nirvanabaid/images_codelingo/blob/main/java-svgrepo-com%20(2).png?raw=true"},
   {"lang": "C++", "dir": CppMenu(), "img": "https://github.com/nirvanabaid/images_codelingo/blob/main/cpp3-svgrepo-com.png?raw=true"},
+  {"lang": "Compiler", "dir": CompilerScreen(),"img":"https://github.com/nirvanabaid/images_codelingo/blob/main/coding.png?raw=true"}
   //{"lang": "Python", "dir": PythonMenu(), "img": "https://github.com/nirvanabaid/images_codelingo/blob/main/python-svgrepo-com.png?raw=true"},
 ];
 class Learner_Home extends StatefulWidget {
@@ -26,6 +28,7 @@ class _Learner_HomeState extends State<Learner_Home> {
     return Scaffold(
         backgroundColor: bg,
       appBar: AppBar(
+
         title: Center(child: Text("CodeLingo", style: GoogleFonts.outfit(textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: height*0.03)))),
         backgroundColor: dark,
       ),

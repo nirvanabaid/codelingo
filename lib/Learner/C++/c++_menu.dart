@@ -59,7 +59,8 @@ class _CppMenuState extends State<CppMenu> {
               ),
               child: Row(
                 children: [
-                  Text("Completed: $completedItems/${items.length}", style: TextStyle(color: white, fontSize: height * 0.03, fontWeight: FontWeight.w700),)
+                  Text("Completed: ", style: TextStyle(color: white, fontSize: height * 0.03, fontWeight: FontWeight.w700),),//$completedItems/${items.length}
+
                 ],
               ),
             ),
