@@ -35,10 +35,12 @@ class _LogInState extends State<LogIn> {
         color: Colors.white, // Adjust label color if needed
       ),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.white, width: 2.0), // Make border more visible
+        borderSide: BorderSide(
+            color: Colors.white, width: 2.0), // Make border more visible
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.white, width: 2.0), // Keep consistent with enabledBorder
+        borderSide: BorderSide(color: Colors.white,
+            width: 2.0), // Keep consistent with enabledBorder
       ),
       border: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.white, width: 2.0),
@@ -48,134 +50,163 @@ class _LogInState extends State<LogIn> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery
+        .of(context)
+        .size
+        .height;
+    var width = MediaQuery
+        .of(context)
+        .size
+        .width;
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(8, 8, 28, 1.0),
       body: SafeArea(
-        child: Padding(
-          padding:  EdgeInsets.only(left: width*0.02),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: height*0.03,),
-              Text(
-                "Sign in",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: height * 0.055,
-                  //fontStyle: FontStyle.italic,
+        child: Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.02),
+            child: Column(
+              children: [
+                SizedBox(height: height * 0.03),
+                // Container for the image
+                Container(
+                  width: width, // Take the full width of the screen
+                  height: height * 0.3, // 30% of screen height
+                  decoration: BoxDecoration(
+                    //color: Colors.grey, // Placeholder color
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+          
+                  child: Container(
+                    width: width * 1, // Define the width of the container
+                    height: height *
+                        0.27, // Define the height of the container to match the image
+                    child: Image.network(
+                      "https://raw.githubusercontent.com/nirvanabaid/images_codelingo/main/DALL%C2%B7E%202024-04-19%2015.48.44%20-%20Create%20an%20image%20of%20a%20circular%20logo%20with%20a%20black%20background.%20Inside%20the%20circle%2C%20the%20word%20_CodeLingo_%20is%20correctly%20spelled%2C%20prominently%20displayed%20in%20a%20s.webp",
+                      fit: BoxFit.fitWidth,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return SizedBox(
+                          width: width * 0.45, // Match the container width
+                          height: height * 0.27, // Match the container height
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+          
+                  // Add your Image here using Image.network or any other way you prefer
                 ),
-              ),
-              SizedBox(height: height * 0.01),
-              Text(
-                "Sign in to continue",
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w500,
-                  fontSize: height * 0.015,
-                  //fontStyle: FontStyle.italic,
-                ),
-              ),
-              Container(
-                width: width * 0.9,
-                height: height * 0.4,
-                //padding: EdgeInsets.all(20), // Add padding for the content inside
-                decoration: BoxDecoration(
-                  color: Colors.transparent, // Use your existing background color
-                  borderRadius: BorderRadius.circular(10), // Circular corners
-                  border: Border.all(
-                    color: Colors.transparent, // Border color
-                    width: 4, // Border width
-                    style: BorderStyle.solid, // Border style
+                SizedBox(height: height * 0.05),
+                Center(
+                  child: Text(
+                    "Sign in",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: height * 0.055,
+                    ),
                   ),
                 ),
-                child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                  TextFormField(
-                  controller: _usernameController,
-                  style: TextStyle(
-                    color: Colors.white, // Text color inside the TextFormField
-                    fontWeight: FontWeight.bold, // Make text bold
-                  ),
-                  decoration: _buildInputDecoration('Enter username').copyWith(
-                    filled: true, // this line is new
-                    fillColor: Color.fromRGBO(35, 34, 63, 1.0), // Set the background color here
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your username';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20), // Provide spacing between fields
-                TextFormField(
-                  controller: _passwordController,
-                  style: TextStyle(
-                    color: Colors.white, // Text color inside the TextFormField
-                    fontWeight: FontWeight.bold, // Make text bold
-                  ),
-                  decoration: _buildInputDecoration('Enter password').copyWith(
-                    filled: true, // this line is new
-                    fillColor: Color.fromRGBO(35, 34, 63, 1.0), // Set the background color here
-                  ),
-                  obscureText: true, // Hide password text
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
-                  },
-
-                      ),
-                      SizedBox(height: height*0.025), // Provide spacing before the button
-                      SizedBox(
-                        width: width,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Validate returns true if the form is valid, otherwise false.
-                            if (_formKey.currentState!.validate()) {
-                              // If the form is valid, display a snackbar.
-                              if(_passwordController.text=="26661466" && _usernameController.text=="baidnirvana@gmail.com")
+                //SizedBox(height: height * 0.01),
+          
+          
+                Expanded(
+                  child: SizedBox(
+                    width: width * 0.9,child: Form(
+                    key: _formKey,
+                    child: Column(
+          
+                      //mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        TextFormField(
+                          controller: _usernameController,
+                          style: TextStyle(
+                            color: Colors.white, // Text color inside the TextFormField
+                            fontWeight: FontWeight.bold, // Make text bold
+                          ),
+                          decoration: _buildInputDecoration('Enter username').copyWith(
+                            filled: true, // this line is new
+                            fillColor: Color.fromRGBO(35, 34, 63, 1.0), // Set the background color here
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your username';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 17), // Provide spacing between fields
+                        TextFormField(
+                          controller: _passwordController,
+                          style: TextStyle(
+                            color: Colors.white, // Text color inside the TextFormField
+                            fontWeight: FontWeight.bold, // Make text bold
+                          ),
+                          decoration: _buildInputDecoration('Enter password').copyWith(
+                            filled: true, // this line is new
+                            fillColor: Color.fromRGBO(35, 34, 63, 1.0), // Set the background color here
+                          ),
+                          obscureText: true, // Hide password text
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your password';
+                            }
+                            return null;
+                          },
+          
+                        ),
+                        SizedBox(height: height*0.025), // Provide spacing before the button
+                        SizedBox(
+                          width: width,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Validate returns true if the form is valid, otherwise false.
+                              if (_formKey.currentState!.validate()) {
+                                // If the form is valid, display a snackbar.
+                                if(_passwordController.text=="26661466" && _usernameController.text=="baidnirvana@gmail.com")
                                 {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(content: Text('Logged In')),
-
+          
                                   );
                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Learner_Home()));
                                 }
-                              else{
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('INCORRECT!!')),
-
-                                );
+                                else{
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('INCORRECT!!')),
+          
+                                  );
+                                }
+          
+                                // Add login logic here
                               }
-
-                              // Add login logic here
-                            }
-                          },
-                          child: Text('Sign In', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: height*0.03),),
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(
-                                129, 73, 225, 1.0))
+                            },
+                            child: Text('Sign In', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: height*0.03),),
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(
+                                    129, 73, 225, 1.0))
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
+                  )
                 ),
-              )
-            ],
+                ],
           ),
+                ),
         ),
-      ),
+    ),
     );
   }
 }
