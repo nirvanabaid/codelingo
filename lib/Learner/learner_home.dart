@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:codelingo/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 final List<Map<String, dynamic>> items = [
-  {"lang": "JAVA", "dir": JavaMenu(), "img": "https://github.com/nirvanabaid/images_codelingo/blob/main/java-svgrepo-com%20(2).png?raw=true"},
   {"lang": "C++", "dir": CppMenu(), "img": "https://github.com/nirvanabaid/images_codelingo/blob/main/cpp3-svgrepo-com.png?raw=true"},
+  {"lang": "JAVA", "dir": JavaMenu(), "img": "https://github.com/nirvanabaid/images_codelingo/blob/main/java-svgrepo-com%20(2).png?raw=true"},
   {"lang": "Compiler", "dir": CompilerScreen(),"img":"https://github.com/nirvanabaid/images_codelingo/blob/main/coding.png?raw=true"}
   //{"lang": "Python", "dir": PythonMenu(), "img": "https://github.com/nirvanabaid/images_codelingo/blob/main/python-svgrepo-com.png?raw=true"},
 ];
